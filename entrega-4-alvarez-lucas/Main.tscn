@@ -24,8 +24,8 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 396, 389 )
-scale = Vector2( 2.60714, 1.42553 )
+position = Vector2( 396.75, 382.25 )
+scale = Vector2( 2.55357, 1.71276 )
 
 [node name="Torret" parent="." instance=ExtResource( 5 )]
 position = Vector2( 83, 174 )
