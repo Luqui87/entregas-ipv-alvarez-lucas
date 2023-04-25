@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/entities/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/background.png" type="Texture" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://src/entities/enemies/Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/entities/enemies/TurretsSpawner.gd" type="Script" id=5]
+[ext_resource path="res://src/enviroment/Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/enviroment/Ramp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/enviroment/Trophy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/enviroment/Obstacle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/enviroment/Floor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/enviroment/Wall.tscn" type="PackedScene" id=11]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Ground" type="Node2D" parent="Environment"]
+
+[node name="Floor" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 1424.51, 565.622 )
+
+[node name="Floor2" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 768.506, 565.622 )
+
+[node name="Floor3" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 112.506, 565.622 )
+
+[node name="Wall" parent="Environment/Ground" instance=ExtResource( 11 )]
+position = Vector2( 31.8359, 298.952 )
+
+[node name="Ramp" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 1396.44, 536.07 )
+
+[node name="Ramp2" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 270.656, 534.143 )
+rotation = 0.690548
+
+[node name="Ramp3" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 612.657, 618.001 )
+rotation = -0.601429
+
+[node name="Platform" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1472.51, 221.622 )
+
+[node name="Platform2" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1728.51, 261.622 )
+
+[node name="Platform3" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1584.51, 413.622 )
+
+[node name="Platform4" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 449.581, 484.16 )
+
+[node name="Platform5" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 545.103, 484.106 )
+
+[node name="Entities" type="Node2D" parent="Environment"]
+
+[node name="Player" parent="Environment/Entities" instance=ExtResource( 1 )]
+position = Vector2( 152.506, 477.622 )
+
+[node name="Camera" type="Camera2D" parent="Environment/Entities/Player"]
+current = true
+
+[node name="TurretsSpawner" type="Position2D" parent="Environment/Entities"]
+position = Vector2( 1269.72, 24.3184 )
+script = ExtResource( 5 )
+turret_scene = ExtResource( 4 )
+extents = Vector2( 300, -350 )
+
+[node name="Turret" parent="Environment/Entities/TurretsSpawner" instance=ExtResource( 4 )]
+position = Vector2( 338.423, 473.544 )
+
+[node name="Obstacles" type="Node2D" parent="Environment/Entities"]
+
+[node name="Obstacle" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 1496.68, 186.419 )
+
+[node name="Obstacle2" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 485.687, 442.792 )
+
+[node name="Obstacle3" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 478, 394 )
+mass = 20.0
+
+[node name="Obstacle4" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 515.538, 442.371 )
+
+[node name="Obstacle5" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 516.379, 398.224 )
+
+[node name="Trophy" parent="Environment/Entities" instance=ExtResource( 8 )]
+position = Vector2( 1464.51, 5.62158 )
