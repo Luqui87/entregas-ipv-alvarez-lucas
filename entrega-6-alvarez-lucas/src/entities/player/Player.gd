@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var cannon = $Cannon
+onready var animation_player = $AnimationPlayer
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -21,6 +22,7 @@ var snap_vector:Vector2 = SNAP_DIRECTION * SNAP_LENGHT
 
 func _ready() -> void:
 	initialize()
+	_play_animation("idle")
 
 
 func initialize(projectile_container: Node = get_parent()) -> void:
@@ -42,11 +44,17 @@ func _process_input() -> void:
 		velocity.y -= jump_speed
 
 	#horizontal speed
+	
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if h_movement_direction != 0:
 		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+		_play_animation("walk")
+		$Body.flip_h = h_movement_direction == -1
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+		_play_animation("idle")
+		
+		
 
 	var mouse_position:Vector2 = get_global_mouse_position()
 	cannon.look_at(mouse_position)
@@ -62,6 +70,9 @@ func notify_hit() -> void:
 	print("I'm player and imma die")
 	call_deferred("_remove")
 
+func _play_animation(anim_name:String):
+	if animation_player.has_animation(anim_name):
+		animation_player.play(anim_name)
 
 func _remove() -> void:
 	set_physics_process(false)
