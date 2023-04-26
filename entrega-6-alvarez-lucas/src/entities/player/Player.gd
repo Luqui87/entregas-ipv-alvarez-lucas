@@ -23,6 +23,7 @@ var snap_vector:Vector2 = SNAP_DIRECTION * SNAP_LENGHT
 func _ready() -> void:
 	initialize()
 	_play_animation("idle")
+	
 
 
 func initialize(projectile_container: Node = get_parent()) -> void:
@@ -41,18 +42,20 @@ func _process_input() -> void:
 	# Jump Action
 	var jump = Input.is_action_just_pressed('jump')
 	if jump and is_on_floor():
+		_play_animation("jump")
 		velocity.y -= jump_speed
+		
 
 	#horizontal speed
 	
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if h_movement_direction != 0:
 		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
-		_play_animation("walk")
+		if (is_on_floor()):
+			_play_animation("walk")
 		$Body.flip_h = h_movement_direction == -1
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-		_play_animation("idle")
 		
 		
 
@@ -64,6 +67,8 @@ func _physics_process(delta) -> void:
 	_process_input()
 	velocity.y += gravity
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
+	if (velocity.x == 0 && velocity.y == 0 && is_on_floor()):
+		_play_animation("idle")
 
 
 func notify_hit() -> void:
@@ -76,6 +81,8 @@ func _play_animation(anim_name:String):
 
 func _remove() -> void:
 	set_physics_process(false)
-	hide()
+	_play_animation("dead")
+#	hide()
 	collision_layer = 0
+	
 
