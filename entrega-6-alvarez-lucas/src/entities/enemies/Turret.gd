@@ -3,6 +3,7 @@ extends StaticBody2D
 onready var fire_position = $FirePosition
 onready var fire_timer = $FireTimer
 onready var raycast = $RayCast2D
+onready var animated_sprite = $turret
 
 export (PackedScene) var projectile_scene
 
@@ -17,6 +18,7 @@ func initialize(container, turret_pos, projectile_container):
 	container.add_child(self)
 	global_position = turret_pos
 	self.projectile_container = projectile_container
+	animated_sprite.play("idle")
 
 func fire():
 	if target != null:
@@ -40,8 +42,8 @@ func notify_hit():
 	call_deferred("_remove")
 
 func _remove():
-	get_parent().remove_child(self)
-	queue_free()
+	animated_sprite.stop()
+	animated_sprite.play("dead")
 
 
 func _on_DetectionArea_body_entered(body):
@@ -53,3 +55,9 @@ func _on_DetectionArea_body_exited(body):
 	if body == target:
 		target = null
 		set_physics_process(false)
+
+func _on_turret_animation_finished():
+	if (animated_sprite.animation == "dead"):
+		get_parent().remove_child(self)
+		queue_free()
+	
