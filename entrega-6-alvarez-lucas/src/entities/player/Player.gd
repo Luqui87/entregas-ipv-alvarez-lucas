@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var cannon = $Cannon
 onready var animation_player = $AnimationPlayer
+onready var body = $Body
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -53,7 +54,13 @@ func _process_input() -> void:
 		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		if (is_on_floor()):
 			_play_animation("walk")
-		$Body.flip_h = h_movement_direction == -1
+		
+		if h_movement_direction == 1 :
+			body.flip_h = false
+			body.set_offset(Vector2(60,0)) 
+		elif h_movement_direction == -1:
+			body.flip_h = true
+			body.set_offset(Vector2(0,0))
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 		
