@@ -144,7 +144,7 @@ position = Vector2( 0, -30.0339 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 3
+frame = 7
 playing = true
 offset = Vector2( 60, 0 )
 
