@@ -46,13 +46,12 @@ func _process_input() -> void:
 		_play_animation("jump")
 		velocity.y -= jump_speed
 		
-
 	#horizontal speed
 	
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if h_movement_direction != 0:
 		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
-		if (is_on_floor()):
+		if (is_on_floor() && animation_player.current_animation != "jump"):
 			_play_animation("walk")
 		
 		if h_movement_direction == 1 :
@@ -63,7 +62,6 @@ func _process_input() -> void:
 			body.set_offset(Vector2(0,0))
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-		
 		
 
 	var mouse_position:Vector2 = get_global_mouse_position()
