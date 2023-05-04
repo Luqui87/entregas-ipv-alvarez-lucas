@@ -279,3 +279,5 @@ position = Vector2( 1209.72, 1311 )
 
 [node name="Trophy" parent="Environment/Entities" instance=ExtResource( 17 )]
 position = Vector2( 182, 581 )
+
+[connection signal="hp_changed" from="Environment/Entities/Player" to="." method="_on_Player_hp_changed"]

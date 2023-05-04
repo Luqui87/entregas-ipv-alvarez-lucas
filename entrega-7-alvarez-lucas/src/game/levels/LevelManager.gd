@@ -21,8 +21,12 @@ func _setup_level(id: int) -> void:
 func _ready():
 	_setup_level(0)
 	current_level_container.get_tree().set_pause(true)
-
+	current_level_container.get_child(0).connect("hp_changed",self,"_on_hp_changed")
+	
 ## Hint: for pause check the SceneTree.paused property.
+
+func _on_hp_changed(value):
+	$UI/GUI._on_hp_changed(value)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):

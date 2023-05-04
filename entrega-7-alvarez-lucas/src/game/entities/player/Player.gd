@@ -26,6 +26,7 @@ var dead: bool = false
 
 var hp: int = 5
 
+signal hp_changed(value)
 
 func _ready() -> void:
 	initialize()
@@ -97,9 +98,12 @@ func _physics_process(delta) -> void:
 ## Gotta add hp here. To communicate with the UI to handle the data, you can either
 ## propagate some "hit"/"hp_changed" signal via Level, or you can use Autoload/Singletons.
 func notify_hit() -> void:
-	print("I'm player and imma die")
-	dead = true
-	_change_animation("dead")
+	emit_signal("hp_changed",-1)
+	self.hp = self.hp - 1
+	if self.hp == 0 :  
+		print("I'm player and imma die")
+		dead = true
+		_change_animation("dead")
 
 
 func _remove() -> void:

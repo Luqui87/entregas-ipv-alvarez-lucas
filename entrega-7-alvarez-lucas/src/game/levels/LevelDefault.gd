@@ -1,6 +1,7 @@
 extends Node
 class_name GameLevel
 
+signal hp_changed(value)
 
 ## You shouldn't load this scene directly, the LevelManager should do that for you.
 
@@ -9,3 +10,8 @@ class_name GameLevel
 
 func _ready() -> void:
 	randomize()
+
+
+func _on_Player_hp_changed(value):
+	emit_signal("hp_changed", value)
+
