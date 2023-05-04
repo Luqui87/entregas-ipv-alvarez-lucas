@@ -27,6 +27,7 @@ var dead: bool = false
 var hp: int = 5
 
 signal hp_changed(value)
+signal player_lose()
 
 func _ready() -> void:
 	initialize()
@@ -104,12 +105,14 @@ func notify_hit() -> void:
 		print("I'm player and imma die")
 		dead = true
 		_change_animation("dead")
+		
 
 
 func _remove() -> void:
 	set_physics_process(false)
 	hide()
 	collision_layer = 0
+	emit_signal("player_lose") 
 
 
 func is_on_floor()->bool:

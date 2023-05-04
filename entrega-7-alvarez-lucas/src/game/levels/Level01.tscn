@@ -281,3 +281,5 @@ position = Vector2( 1209.72, 1311 )
 position = Vector2( 182, 581 )
 
 [connection signal="hp_changed" from="Environment/Entities/Player" to="." method="_on_Player_hp_changed"]
+[connection signal="player_lose" from="Environment/Entities/Player" to="." method="_on_Player_player_lose"]
+[connection signal="player_win" from="Environment/Entities/Trophy" to="." method="_on_Trophy_player_win"]

@@ -22,8 +22,18 @@ func _ready():
 	_setup_level(0)
 	current_level_container.get_tree().set_pause(true)
 	current_level_container.get_child(0).connect("hp_changed",self,"_on_hp_changed")
+	current_level_container.get_child(0).connect("player_win",self,"_on_player_win")
+	current_level_container.get_child(0).connect("player_lose",self,"_on_player_lose")
 	
 ## Hint: for pause check the SceneTree.paused property.
+
+func _on_player_lose():
+	current_level_container.get_tree().set_pause(true)
+	$UI/Menus/LoseMenu.visible = true
+
+func _on_player_win():
+	current_level_container.get_tree().set_pause(true)
+	$UI/Menus/WinMenu.visible = true
 
 func _on_hp_changed(value):
 	$UI/GUI._on_hp_changed(value)
