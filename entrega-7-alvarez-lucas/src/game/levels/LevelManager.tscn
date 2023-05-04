@@ -18,35 +18,35 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 3 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/GUI"]
+[node name="Healtbar" type="HBoxContainer" parent="UI/GUI"]
 anchor_right = 0.375
 anchor_bottom = 0.1
 margin_right = 4.99997
 
-[node name="Heart" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+[node name="Heart" type="TextureRect" parent="UI/GUI/Healtbar"]
 margin_right = 53.0
 margin_bottom = 60.0
 texture = ExtResource( 5 )
 
-[node name="Heart2" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+[node name="Heart2" type="TextureRect" parent="UI/GUI/Healtbar"]
 margin_left = 57.0
 margin_right = 110.0
 margin_bottom = 60.0
 texture = ExtResource( 5 )
 
-[node name="Heart3" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="UI/GUI/Healtbar"]
 margin_left = 114.0
 margin_right = 167.0
 margin_bottom = 60.0
 texture = ExtResource( 5 )
 
-[node name="Heart4" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+[node name="Heart4" type="TextureRect" parent="UI/GUI/Healtbar"]
 margin_left = 171.0
 margin_right = 224.0
 margin_bottom = 60.0
 texture = ExtResource( 5 )
 
-[node name="Heart5" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+[node name="Heart5" type="TextureRect" parent="UI/GUI/Healtbar"]
 margin_left = 228.0
 margin_right = 281.0
 margin_bottom = 60.0
@@ -62,43 +62,51 @@ mouse_filter = 2
 anchor_left = 0.392
 anchor_right = 0.666
 anchor_bottom = 1.0
-margin_left = -18.6
-margin_top = 130.0
-margin_right = 1.20001
-margin_bottom = -182.0
+margin_left = 0.399994
+margin_top = 91.0
+margin_right = 0.200012
+margin_bottom = -100.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Menus/PauseMenu"]
-anchor_top = 0.5
+anchor_top = 0.153
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -100.0
-margin_bottom = 100.0
+anchor_bottom = 1.09
+margin_top = -0.064003
+margin_bottom = -69.92
 alignment = 1
 
 [node name="Label" type="Label" parent="UI/Menus/PauseMenu/VBoxContainer"]
-margin_right = 239.0
-margin_bottom = 60.0
+margin_top = 21.0
+margin_right = 219.0
+margin_bottom = 81.0
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 4 )
 text = "Pause"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Menus/PauseMenu/VBoxContainer"]
-margin_top = 64.0
-margin_right = 239.0
-margin_bottom = 200.0
+margin_top = 107.0
+margin_right = 219.0
+margin_bottom = 313.0
 
 [node name="Play" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Play"
 
-[node name="Back" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
 margin_top = 70.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 136.0
+custom_fonts/font = ExtResource( 4 )
+text = "Restart"
+
+[node name="Back" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 219.0
+margin_bottom = 206.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Back"
@@ -106,4 +114,5 @@ text = "Back"
 [node name="CurrentLevelContainer" type="Node" parent="."]
 
 [connection signal="pressed" from="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

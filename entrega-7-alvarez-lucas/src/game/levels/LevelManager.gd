@@ -44,3 +44,7 @@ func _on_Play_pressed():
 
 func _on_Back_pressed():
 	get_tree().change_scene("res://src/screens/MainMenu.tscn")
+
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()

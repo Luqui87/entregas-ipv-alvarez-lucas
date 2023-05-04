@@ -11,5 +11,5 @@ func _ready():
 func _on_hp_changed(value):
 	if value == -1 && hp > 0 :
 		self.hp = self.hp - 1
-		var heart = $HBoxContainer.get_child(self.hp)
+		var heart = $Healtbar.get_child(self.hp)
 		heart.texture = load("res://assets/textures/ui/gui/hud_heartEmpty.png")
