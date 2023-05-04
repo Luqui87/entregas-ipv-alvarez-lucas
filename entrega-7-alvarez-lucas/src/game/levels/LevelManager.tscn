@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/game/levels/Level01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/levels/LevelManager.gd" type="Script" id=2]
+[ext_resource path="res://src/game/ui/GUIManager.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/textures/ui/gui/hud_heartFull.png" type="Texture" id=5]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource( 2 )
+levels = [ ExtResource( 1 ) ]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/GUI"]
+anchor_right = 0.375
+anchor_bottom = 0.1
+margin_right = 4.99997
+
+[node name="Heart" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+margin_right = 53.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+
+[node name="Heart2" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+margin_left = 57.0
+margin_right = 110.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+
+[node name="Heart3" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+margin_left = 114.0
+margin_right = 167.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+
+[node name="Heart4" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+margin_left = 171.0
+margin_right = 224.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+
+[node name="Heart5" type="TextureRect" parent="UI/GUI/HBoxContainer"]
+margin_left = 228.0
+margin_right = 281.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+
+[node name="Menus" type="Control" parent="UI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PauseMenu" type="Control" parent="UI/Menus"]
+anchor_left = 0.392
+anchor_right = 0.666
+anchor_bottom = 1.0
+margin_left = -18.6
+margin_top = 130.0
+margin_right = 1.20001
+margin_bottom = -182.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menus/PauseMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -100.0
+margin_bottom = 100.0
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/Menus/PauseMenu/VBoxContainer"]
+margin_right = 239.0
+margin_bottom = 60.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 4 )
+text = "Pause"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menus/PauseMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 239.0
+margin_bottom = 200.0
+
+[node name="Play" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
+margin_right = 239.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Play"
+
+[node name="Back" type="Button" parent="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 239.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Back"
+
+[node name="CurrentLevelContainer" type="Node" parent="."]
+
+[connection signal="pressed" from="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="UI/Menus/PauseMenu/VBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

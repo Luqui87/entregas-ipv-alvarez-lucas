@@ -1,0 +1,236 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/screens/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/background/Layer_0010_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/04B_30__.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/textures/background/Layer_0002_7.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/background/Layer_0008_3.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/background/Layer_0004_Lights.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/background/Layer_0001_8.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/background/Layer_0000_9.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/background/Layer_0003_6.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/background/Layer_0006_4.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/background/Layer_0007_Lights.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/background/Layer_0005_5.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/background/Layer_0009_2.png" type="Texture" id=13]
+[ext_resource path="res://src/screens/background.gd" type="Script" id=14]
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="TextureRect" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Container/Background"]
+script = ExtResource( 14 )
+
+[node name="Sky" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1856, 1586 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/Sky"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesFar" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesFar"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesNearer1" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesNearer1"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SunRays" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.3, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/SunRays"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesNearer2" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.4, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesNearer2"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesNearer3" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.5, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesNearer3"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SunRaysNearer" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.6, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/SunRaysNearer"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesNearest" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.7, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesNearest"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreesFolliage" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.8, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/TreesFolliage"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GroundBack" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 0.9, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/GroundBack"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GroundFront" type="ParallaxLayer" parent="Container/Background/ParallaxBackground"]
+position = Vector2( 0, -182 )
+motion_scale = Vector2( 1, 0.1 )
+motion_mirroring = Vector2( 1856, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/Background/ParallaxBackground/GroundFront"]
+position = Vector2( -22.653, -766.426 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Container"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -219.0
+margin_top = 68.0
+margin_right = 216.0
+margin_bottom = 128.0
+grow_horizontal = 2
+size_flags_horizontal = 5
+custom_fonts/font = SubResource( 4 )
+text = "The Tales of Kirsty"
+
+[node name="Buttons" type="VBoxContainer" parent="Container"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -148.0
+margin_right = 243.0
+mouse_filter = 2
+theme = SubResource( 1 )
+alignment = 1
+
+[node name="Start" type="Button" parent="Container/Buttons"]
+margin_top = 49.0
+margin_right = 243.0
+margin_bottom = 72.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Quit")
+custom_fonts/font = SubResource( 2 )
+text = "Start"
+
+[node name="Quit" type="Button" parent="Container/Buttons"]
+margin_top = 76.0
+margin_right = 243.0
+margin_bottom = 99.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Start")
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+
+[connection signal="pressed" from="Container/Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Container/Buttons/Quit" to="." method="_on_Quit_pressed"]
