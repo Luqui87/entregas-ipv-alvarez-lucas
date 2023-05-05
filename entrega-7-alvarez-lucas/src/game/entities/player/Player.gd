@@ -131,3 +131,9 @@ func _change_animation(anim_name: String) -> void:
 func _on_BodyAnimations_animation_finished(anim_name: String) -> void:
 	if anim_name == "dead":
 		call_deferred("_remove")
+
+
+func _on_Gem_body_entered(body):
+	if (hp < 5):
+		self.hp = self.hp + 1
+		emit_signal("hp_changed", 1)

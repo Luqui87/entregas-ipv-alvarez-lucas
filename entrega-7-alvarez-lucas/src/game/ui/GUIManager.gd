@@ -13,3 +13,7 @@ func _on_hp_changed(value):
 		self.hp = self.hp - 1
 		var heart = $Healtbar.get_child(self.hp)
 		heart.texture = load("res://assets/textures/ui/gui/hud_heartEmpty.png")
+	else :
+		var heart = $Healtbar.get_child(self.hp)
+		heart.texture = load("res://assets/textures/ui/gui/hud_heartFull.png")
+		self.hp = self.hp + 1

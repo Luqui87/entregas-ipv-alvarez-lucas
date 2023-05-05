@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/textures/background/Layer_0010_1.png" type="Texture" id=1]
 [ext_resource path="res://src/game/enviroment/Ground.tres" type="TileSet" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/textures/background/Layer_0009_2.png" type="Texture" id=12]
 [ext_resource path="res://assets/textures/background/Layer_0007_Lights.png" type="Texture" id=13]
 [ext_resource path="res://assets/textures/background/Layer_0000_9.png" type="Texture" id=14]
+[ext_resource path="res://src/game/enviroment/Gem.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/game/enviroment/Trophy.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/game/enviroment/Platform.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/game/entities/enemies/Cat.tscn" type="PackedScene" id=20]
@@ -280,6 +281,10 @@ position = Vector2( 1209.72, 1311 )
 [node name="Trophy" parent="Environment/Entities" instance=ExtResource( 17 )]
 position = Vector2( 182, 581 )
 
+[node name="Gem" parent="Environment/Entities" instance=ExtResource( 15 )]
+position = Vector2( 2907, 1361 )
+
 [connection signal="hp_changed" from="Environment/Entities/Player" to="." method="_on_Player_hp_changed"]
 [connection signal="player_lose" from="Environment/Entities/Player" to="." method="_on_Player_player_lose"]
 [connection signal="player_win" from="Environment/Entities/Trophy" to="." method="_on_Trophy_player_win"]
+[connection signal="body_entered" from="Environment/Entities/Gem" to="Environment/Entities/Player" method="_on_Gem_body_entered"]

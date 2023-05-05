@@ -17,11 +17,10 @@ func _ready() -> void:
 func _on_Player_hp_changed(value):
 	emit_signal("hp_changed", value)
 
-
-
 func _on_Trophy_player_win():
 	emit_signal("player_win")
 
 
 func _on_Player_player_lose():
 	emit_signal("player_lose")
+
