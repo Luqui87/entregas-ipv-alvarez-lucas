@@ -10,7 +10,7 @@
 
 [node name="LevelManager" type="Node"]
 script = ExtResource( 2 )
-levels = [ ExtResource( 1 ) ]
+levels = [ ExtResource( 1 ), null ]
 
 [node name="UI" type="CanvasLayer" parent="."]
 

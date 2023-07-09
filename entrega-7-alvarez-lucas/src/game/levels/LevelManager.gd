@@ -4,7 +4,7 @@ export (Array, PackedScene) var levels: Array
 
 onready var current_level_container: Node = $CurrentLevelContainer
 
-var isPaused = true setget set_is_paused
+var isPaused = false setget set_is_paused
 
 ## This won't run by itself. Use all variables and functions necessary to run this correctly.
 
